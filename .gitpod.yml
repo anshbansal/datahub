@@ -1,3 +1,4 @@
+image: acryldata/datahub-ingestion-base:latest
 
 tasks:
   - name: gradle commands to pull in most of dependencies
@@ -7,12 +8,11 @@ tasks:
       ./gradlew :metadata-service:war:build
   - name: python commands to pull in most python dependencies
     command: |
-      cd metadata-ingestion
-      python3 -m venv venv
-      source venv/bin/activate
-      pip install -e '.[dev]'
+      python3 -m pip install --upgrade pip wheel setuptools
+      python3 -m pip uninstall datahub acryl-datahub || true
+      python3 -m pip install --upgrade acryl-datahub
+      datahub version
 
 vscode:
   extensions:
-    - vscjava.vscode-java-pack
     - ms-python.python
