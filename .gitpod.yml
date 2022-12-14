@@ -1,4 +1,4 @@
-image: acryldata/datahub-ingestion-base:latest
+# image: acryldata/datahub-ingestion-base:latest
 
 tasks:
   - name: gradle commands to pull in most of dependencies
